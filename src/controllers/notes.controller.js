@@ -8,7 +8,7 @@ notesCtrl.renderNoteForm = (req, res) => {
 };
 
 notesCtrl.createNewNote = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description,empleado } = req.body;
   const errors = [];
   if (!title) {
     errors.push({ text: "Por favor ingrese Título." });
@@ -23,7 +23,7 @@ notesCtrl.createNewNote = async (req, res) => {
       description,
     });
   } else {
-    const newNote = new Note({ title, description });
+    const newNote = new Note({ title, description,empleado });
     newNote.user = req.user.id;
     await newNote.save();
     req.flash("success_msg", "Tarea Agregada");

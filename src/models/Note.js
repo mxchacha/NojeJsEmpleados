@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const mongoose=require('mongoose');
+const empleado=mongoose.model('empleado')
 
 const NoteSchema = new Schema(
   {
@@ -13,7 +15,11 @@ const NoteSchema = new Schema(
     user: {
       type: String,
       required: true
+    },
+    empleado:{
+      type:Schema.ObjectId, ref:"empleado"
     }
+
   },
   {
     timestamps: true
